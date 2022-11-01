@@ -107,6 +107,8 @@
       let start = document.getElementById("start");
       start.onclick = function(){camera.start()};
       
+      const fpsControl = new controls.FPS();
+      
       const controls = window;
       //test
       new controls.ControlPanel(controlsElement, {
