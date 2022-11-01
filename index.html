@@ -33,6 +33,8 @@
       }
     </style>
     <script type="module">
+
+
       const videoElement = document.getElementsByClassName("input_video")[0];
       const canvasElement = document.getElementsByClassName("output_canvas")[0];
       const canvasCtx = canvasElement.getContext("2d");
@@ -92,7 +94,10 @@
         height: 720
       
       });
-      camera.start();
+
+      let start = document.getElementById("start");
+      start.onclick = function(){camera.start()};
+      
     </script>
   </head>
 
@@ -115,6 +120,7 @@
     <div class="container2">
       <video class="input_video"></video>
       <canvas id="output" class="output_canvas"></canvas>
+      <button id="start">Start</button>
     </div>
     
   </body>
