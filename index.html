@@ -45,6 +45,7 @@
       const videoElement = document.getElementsByClassName("input_video")[0];
       const canvasElement = document.getElementsByClassName("output_canvas")[0];
       const canvasCtx = canvasElement.getContext("2d");
+      const controlsElement =  document.getElementsById("control");
 
       function onResults(results) {
         canvasCtx.save();
@@ -105,6 +106,57 @@
       let start = document.getElementById("start");
       start.onclick = function(){camera.start()};
       
+      const controls = window;
+      //test
+      new controls
+    .ControlPanel(controlsElement, {
+      selfieMode: true,
+      modelSelection: 1,
+      effect: 'mask',
+    })
+    .add([
+      new controls.StaticText({title: 'MediaPipe Selfie Segmentation'}),
+      fpsControl,
+      new controls.Toggle({title: 'Selfie Mode', field: 'selfieMode'}),
+      new controls.SourcePicker({
+        onSourceChanged: () => {
+          selfieSegmentation.reset();
+        },
+        onFrame:
+            async (input: controls.InputImage, size: controls.Rectangle) => {
+              const aspect = size.height / size.width;
+              let width: number, height: number;
+              if (window.innerWidth > window.innerHeight) {
+                height = window.innerHeight;
+                width = height / aspect;
+              } else {
+                width = window.innerWidth;
+                height = width * aspect;
+              }
+              canvasElement.width = width;
+              canvasElement.height = height;
+              await selfieSegmentation.send({image: input});
+            },
+        examples: examples
+      }),
+      new controls.Slider({
+        title: 'Model Selection',
+        field: 'modelSelection',
+        discrete: ['General', 'Landscape'],
+      }),
+      new controls.Slider({
+        title: 'Effect',
+        field: 'effect',
+        discrete: {'background': 'Background', 'mask': 'Foreground'},
+      }),
+    ])
+    .on(x => {
+      const options = x as mpSelfieSegmentation.Options;
+      videoElement.classList.toggle('selfie', options.selfieMode);
+      activeEffect = (x as {[key: string]: string})['effect'];
+      selfieSegmentation.setOptions(options);
+    });
+      
     </script>
   </head>
 
@@ -127,6 +179,7 @@
     <div class="container2">
       <video class="input_video"></video>
       <canvas id="output" class="output_canvas"></canvas>
+      <div id="control"></div>
       <button id="start">Start</button>
     </div>
     
