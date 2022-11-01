@@ -39,7 +39,7 @@
         position:absolute;
       }
     </style>
-    <script  type="typescript">
+    <script  type="module">
 
 
       const videoElement = document.getElementsByClassName("input_video")[0];
@@ -123,19 +123,12 @@
           selfieSegmentation.reset();
         },
         onFrame:
-            async (input: controls.InputImage, size: controls.Rectangle) => {
-              const aspect = size.height / size.width;
-              let width: number, height: number;
-              if (window.innerWidth > window.innerHeight) {
-                height = window.innerHeight;
-                width = height / aspect;
-              } else {
-                width = window.innerWidth;
-                height = width * aspect;
-              }
-              canvasElement.width = width;
-              canvasElement.height = height;
-              await selfieSegmentation.send({image: input});
+            async () => {
+              const aspect = 250 / 250;
+              let width= 250, height=250;
+              canvasElement.width = 250;
+              canvasElement.height = 250;
+              await selfieSegmentation.send({image: videoElement});
             },
         examples: examples
       }),
@@ -151,9 +144,8 @@
       }),
     ])
     .on(x => {
-      const options = x as mpSelfieSegmentation.Options;
+      const options = x;
       videoElement.classList.toggle('selfie', options.selfieMode);
-      activeEffect = (x as {[key: string]: string})['effect'];
       selfieSegmentation.setOptions(options);
     });
       
