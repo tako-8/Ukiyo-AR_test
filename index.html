@@ -134,7 +134,7 @@
                height= 720;
               canvasElement.width = 250;
               canvasElement.height = 250;
-              await selfieSegmentation.send({image: controls.InputImage});
+              await selfieSegmentation.send({image: controls.InputImage, width:1280, height:720});
             }, 
       }),
       new controls.Slider({
