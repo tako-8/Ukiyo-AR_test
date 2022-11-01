@@ -107,9 +107,11 @@
       let start = document.getElementById("start");
       start.onclick = function(){camera.start()};
       
-      const fpsControl = new controls.FPS();
+      
       
       const controls = window;
+      const fpsControl = new controls.FPS();
+      
       //test
       new controls.ControlPanel(controlsElement, {
       selfieMode: true,
