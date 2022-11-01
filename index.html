@@ -43,9 +43,9 @@
 
 
       const videoElement = document.getElementsByClassName("input_video")[0];
-      const canvasElement = document.getElementByClassName("output_canvas")[0];
+      const canvasElement = document.getElementsByClassName("output_canvas")[0];
       const canvasCtx = canvasElement.getContext("2d");
-      const controlsElement =  document.getElementsById("control");
+      const controlsElement =  document.getElementById("control");
       const mpSelfieSegmentation = window;
 
       function onResults(results) {
