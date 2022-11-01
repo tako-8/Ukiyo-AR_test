@@ -46,6 +46,7 @@
       const canvasElement = document.getElementsByClassName("output_canvas")[0];
       const canvasCtx = canvasElement.getContext("2d");
       const controlsElement =  document.getElementsById("control");
+      const mpSelfieSegmentation = window;
 
       function onResults(results) {
         canvasCtx.save();
@@ -108,8 +109,7 @@
       
       const controls = window;
       //test
-      new controls
-    .ControlPanel(controlsElement, {
+      new controls.ControlPanel(controlsElement, {
       selfieMode: true,
       modelSelection: 1,
       effect: 'mask',
