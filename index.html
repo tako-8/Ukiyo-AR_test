@@ -132,7 +132,7 @@
               let width= 250, height=250;
               canvasElement.width = 250;
               canvasElement.height = 250;
-              await selfieSegmentation.send({image: videoElement});
+              await selfieSegmentation.send({image: controls.InputImage});
             }
       }),
       new controls.Slider({
