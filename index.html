@@ -119,12 +119,13 @@
       
       //test
       
-      navigator.mediaDevices.getUserMedia({ video: { facingMode: mode } })
-            .then(stream => vi.srcObject = stream)
-            .catch(err => alert(`${err.name} ${err.message}`));
-
-    cameraFacing = !cameraFacing;
-});
+      const constraints = {
+  video: {
+    width: { 1280 },
+    height: { 720 },
+    facingMode: "environment"
+  },
+};
       
       
     </script>
