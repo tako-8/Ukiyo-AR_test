@@ -118,46 +118,7 @@
       const fpsControl = new controls.FPS();
       
       //test
-      new controls.ControlPanel(controlsElement, {
-      selfieMode: true,
-      modelSelection: 1,
-      effect: 'mask',
-    })
-    .add([
-      new controls.StaticText({title: 'MediaPipe Selfie Segmentation'}),
-      fpsControl,
-      new controls.Toggle({title: 'Selfie Mode', field: 'selfieMode'}),
-      new controls.SourcePicker({
-        onSourceChanged: () => {
-          selfieSegmentation.reset();
-        },
-        onFrame:
-            async () => {
-              const aspect = 1280 / 720;
-              let width= 250, height=250;
-               width= 1280;
-               height= 720;
-              canvasElement.width = 250;
-              canvasElement.height = 250;
-              await selfieSegmentation.send({image: controls.InputImage, width:1280, height:720});
-            }, 
-      }),
-      new controls.Slider({
-        title: 'Model Selection',
-        field: 'modelSelection',
-        discrete: ['General', 'Landscape'],
-      }),
-      new controls.Slider({
-        title: 'Effect',
-        field: 'effect',
-        discrete: {'background': 'Background', 'mask': 'Foreground'},
-      }),
-    ])
-    .on(x => {
-      const options = x;
-      videoElement.classList.toggle('selfie', options.selfieMode);
-      selfieSegmentation.setOptions(options);
-    });
+      
       
     </script>
   </head>
@@ -166,7 +127,7 @@
 
     
     <div id="Ushijima_overlay"></div>
-<!--     <a-scene>
+    <a-scene>
       <a-sky src="src/Ushijima.jpg" rotation="0 -130 0"></a-sky>
 
       <a-text
@@ -176,7 +137,7 @@
         position="-2.3 2.25 -1.5"
         rotation="0 30 0"
       ></a-text>
-    </a-scene> -->
+    </a-scene> 
 
     <div class="container2">
       <video class="input_video"></video>
