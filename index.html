@@ -102,14 +102,11 @@
         onFrame: async () => {
           await selfieSegmentation.send({ image: videoElement });
         },
-        width: 1280,
-        height: 720
+        width: 2560,
+        height: 1440
       
       });
       
-      getUserMedia(constraints)
-       { audio: true, video: { facingMode: { exact: "environment" } } }
-
 
 //       let start = document.getElementById("start");
 //       start.onclick = function(){camera.start()};
