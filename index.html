@@ -24,8 +24,8 @@
       }
 
       #output{
-        width: 400px;
-        height: 850px;
+        width: 800px;
+        height: 400px;
         position: absolute;
         top: 0;
         left: 0;
@@ -102,8 +102,8 @@
         onFrame: async () => {
           await selfieSegmentation.send({ image: videoElement });
         },
-        width: 2560,
-        height: 1440
+        width: 1280,
+        height: 720
       
       });
       
@@ -146,10 +146,6 @@
       <div id="control"></div>
 <!--       <button id="start">Start</button> -->
     </div>
-    
-    <script>
-
-    </script>
-    
+        
   </body>
 </html>
