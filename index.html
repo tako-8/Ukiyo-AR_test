@@ -113,7 +113,6 @@
       camera.start()
       
       
-      
       const controls = window;
       const fpsControl = new controls.FPS();
       
@@ -148,13 +147,13 @@
     </div>
     
     <script>
-      const constraints = {
+      navigator.mediaDevices.getUserMedia({
+  audio: false,
   video: {
-    width: 1280,
-    height: 720,
-    facingMode: { exact : "environment" }
-  },
-};
+    width: 640, height: 480,
+    facingMode: { exact: "environment" }
+  }
+})
     </script>
     
   </body>
