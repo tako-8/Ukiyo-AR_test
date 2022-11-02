@@ -103,9 +103,13 @@
           await selfieSegmentation.send({ image: videoElement });
         },
         width: 1280,
-        height: 720
+        height: 720,
+        facingMode: "environment"
       
       });
+
+      console.log("test")
+      console.log(camera)
       
 
 //       let start = document.getElementById("start");
