@@ -97,6 +97,14 @@
         modelSelection: 0
       });
       selfieSegmentation.onResults(onResults);
+      
+                  const constraints = {
+  video: {
+    width: 1280,
+    height: 720,
+    facingMode: "environment"
+  },
+};
 
       const camera = new Camera(videoElement, {
         onFrame: async () => {
@@ -106,14 +114,6 @@
         height: 720
       
       });
-      
-            const constraints = {
-  video: {
-    width: 1280,
-    height: 720,
-    facingMode: "environment"
-  },
-};
 
 //       let start = document.getElementById("start");
 //       start.onclick = function(){camera.start()};
