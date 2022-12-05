@@ -2,13 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
-
 
     <style>
       #Ushijima_overlay {
@@ -21,6 +27,43 @@
         background-image: url("src/Ushijima_overlay.png");
         background-size: cover;
         display: block;
+      }
+
+      #app1 {
+        width: 100px;
+        height: 60px;
+        position: absolute;
+        top: 270px;
+        left: 10px;
+        z-index: 2100;
+        background-image: url("src/app1.png");
+        background-size: cover;
+        display: block;
+      }
+
+      #app2 {
+        width: 380px;
+        height: 185px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        z-index: 2300;
+        background-image: url("src/app2.png");
+        background-size: cover;
+        display: none;
+      }
+
+      #app3 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2200;
+        background-color: black;
+        background-size: cover;
+        opacity: 0.5;
+        display: none;
       }
 
       #output{
@@ -121,17 +164,31 @@
       const controls = window;
       const fpsControl = new controls.FPS();
       
-      //test
+      //capture v
       
-      
+     
       
     </script>
   </head>
 
   <body style="margin: 0; padding: 0; overflow: hidden;"> 
 
-    
     <div id="Ushijima_overlay"></div>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+
+    <div>
+      <v-btn
+        id="save-btn"
+        @click="captureImage"
+      >
+      画像を保存
+      </v-btn>
+      <div id="capture">
+      </div>
+    </div>
+
     <a-scene>
       <a-sky src="src/Ushijima.jpg" rotation="0 -130 0"></a-sky>
 
@@ -144,9 +201,25 @@
       ></a-text>
     </a-scene> 
 
+    <script>
+      let app1 = document.getElementById("app1");
+      let app2 = document.getElementById("app2");
+      let app3 = document.getElementById("app3");
+
+      app1.addEventListener("click", () => {
+        $("#app2").fadeIn();
+        $("#app3").fadeIn();
+      });
+
+      app2.addEventListener("click", () => {
+        $("#app2").fadeOut();
+        $("#app3").fadeOut();
+      });
+    </script>
+    
     <div class="container2">
       <video class="input_video"></video>
-      <canvas id="output" class="output_canvas"　width="1280px" height="720px"></canvas>
+      <canvas id="output" class="output_canvas" width="1280px" height="720px"></canvas>
       <div id="control"></div>
 <!--       <button id="start">Start</button> -->
     </div>
