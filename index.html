@@ -17,6 +17,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
 
     <style>
+       .a-enter-vr-button{
+        display:none;
+      }
+
       #Ushijima_Title {
         width: 80px;
         height: 240px;
@@ -85,8 +89,8 @@
         width: 60px;
         height: 60px;
         position: absolute;
-        bottom: 60px;
-        right: 20px;
+        bottom: 10px;
+        right: 10px;
         z-index: 2100;
         background-image: url("src/Gagou.png");
         background-size: cover;
@@ -122,6 +126,7 @@
         position:absolute;
       } */
     </style>
+
     <script  type="module">
 
 
@@ -204,10 +209,8 @@
       const controls = window;
       const fpsControl = new controls.FPS();
       
-      //capture v
-      
-     
-      
+
+       
     </script>
   </head>
 
@@ -221,8 +224,11 @@
     <div id="Gagou"></div>
     <div id="Overlay"></div>
 
+
     <a-scene>
-      <a-sky src="src/Ushijima.jpg" rotation="0 -130 0"></a-sky>
+      <a-sky 
+        src="src/Ushijima.jpg" rotation="0 -130 0"
+      ></a-sky>
 
       <a-text
         font="kelsonsans"
@@ -231,6 +237,14 @@
         position="-2.3 2.25 -1.5"
         rotation="0 30 0"
       ></a-text>
+
+      <a-image
+        src="src/smtk.png"
+        width="1"
+        height="0.5"
+        position="1.0 1.5 -1.5"
+        rotation="0 0 -40"
+      ></a-image>
     </a-scene> 
 
     <script>
