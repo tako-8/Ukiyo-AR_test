@@ -53,19 +53,7 @@
         display: block;
       }
 
-      #app1 {
-        width: 80px;
-        height: 48px;
-        position: absolute;
-        bottom: 80px;
-        right: 10px;
-        z-index: 2100;
-        background-image: url("src/app1.png");
-        background-size: cover;
-        display: block;
-      }
-
-      #app2 {
+      #introduction_1 {
         width: 90%;
         height: 90%;
         position: relative;
@@ -73,14 +61,71 @@
         left: 50%;
         transform: translate(-50%,-50%);
         z-index: 2300;
-        background-image: url("src/app2.png");
+        background-image: url("src/introduction_1.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+      }
+
+      #introduction_2 {
+        width: 90%;
+        height: 90%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 2300;
+        background-image: url("src/introduction_2.png");
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
         display: none;
       }
 
-      #app3 {
+      #introduction_3 {
+        width: 90%;
+        height: 90%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 2300;
+        background-image: url("src/introduction_3.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: none;
+      }
+
+      #map1 {
+        width: 80px;
+        height: 48px;
+        position: absolute;
+        bottom: 80px;
+        right: 10px;
+        z-index: 2100;
+        background-image: url("src/map1.png");
+        background-size: cover;
+        display: block;
+      }
+
+      #map2 {
+        width: 90%;
+        height: 90%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 2300;
+        background-image: url("src/map2.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: none;
+      }
+
+      #background {
         width: 100%;
         height: 100%;
         position: absolute;
@@ -90,7 +135,7 @@
         background-color: black;
         background-size: cover;
         opacity: 0.85;
-        display: none;
+        display: block;
       }
 
       #Gagou {
@@ -243,11 +288,20 @@
 
     <div id="Ushijima_Title"></div>
     <div id="Ushijima_Character_1"></div>
-    <div id="app1"></div>
-    <div id="app2"></div>
-    <div id="app3"></div>
+    <div id="introduction_1"></div>
+    <div id="introduction_2"></div>
+    <div id="introduction_3"></div>
+    <div id="map1"></div>
+    <div id="map2"></div>
+    <div id="background"></div>
     <div id="Gagou"></div>
     <div id="Overlay"></div>
+<!--     <div id="ui">
+      <h3>
+        <p>地図をタップで戻る</p>
+      </h3>
+    </div> -->
+
 
     <a-scene>
       
@@ -271,21 +325,42 @@
     </a-scene> 
 
     <script>
-      let app1 = document.getElementById("app1");
-      let app2 = document.getElementById("app2");
-      let app3 = document.getElementById("app3");
-//       let ui = document.getElementById("ui");
+      let introduction_1 = document.getElementById("introduction_1");
+      let introduction_2 = document.getElementById("introduction_2");
+      let introduction_3 = document.getElementById("introduction_3");
+      let Gagou = document.getElementById("Gagou");
+      let map1 = document.getElementById("map1");
+      let map2 = document.getElementById("map2");
+      let background = document.getElementById("background");
 
-      app1.addEventListener("click", () => {
-        $("#app2").fadeIn();
-        $("#app3").fadeIn();
-//         $("#ui").fadeIn();
+      introduction_1.addEventListener("click", () => {
+        $("#introduction_1").fadeOut();
+        $("#introduction_2").fadeIn();
       });
 
-      app2.addEventListener("click", () => {
-        $("#app2").fadeOut();
-        $("#app3").fadeOut();
-//         $("#ui").fadeOut();
+      introduction_2.addEventListener("click", () => {
+        $("#introduction_2").fadeOut();
+        $("#introduction_3").fadeIn();
+      });
+
+      introduction_3.addEventListener("click", () => {
+        $("#introduction_3").fadeOut();
+        $("#background").fadeOut();
+      });
+
+      Gagou.addEventListener("click", () => {
+        $("#introduction_1").fadeIn();
+        $("#background").fadeIn();
+      });
+
+      map1.addEventListener("click", () => {
+        $("#map2").fadeIn();
+        $("#background").fadeIn();
+      });
+
+      map2.addEventListener("click", () => {
+        $("#map2").fadeOut();
+        $("#background").fadeOut();
       });
     </script>
     
