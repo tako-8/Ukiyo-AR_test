@@ -41,14 +41,62 @@
         display: block;
       }
 
-      #Ushijima_Character_1 {
-        width: 295px;
-        height: 140px;
+      #Ushi1 {
+        width: 100px;
+        height: 100px;
         position: absolute;
         top: 10px;
         left: 100px;
         z-index: 2000;
-        background-image: url("src/Ushijima_Character_1.png");
+        background-image: url("src/Ushi.png");
+        background-size: cover;
+        display: block;
+      }
+
+      #Ushi2 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 60px;
+        left: 160px;
+        z-index: 2000;
+        background-image: url("src/Ushi.png");
+        background-size: cover;
+        display: block;
+      }
+
+      #Ushi3 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 30px;
+        left: 230px;
+        z-index: 1900;
+        background-image: url("src/Ushi.png");
+        background-size: cover;
+        display: block;
+      }
+
+      #Ushi4 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 10px;
+        left: 330px;
+        z-index: 2000;
+        background-image: url("src/Ushi.png");
+        background-size: cover;
+        display: block;
+      }
+
+      #Ushi5 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 90px;
+        left: 370px;
+        z-index: 2000;
+        background-image: url("src/Ushi.png");
         background-size: cover;
         display: block;
       }
@@ -61,7 +109,7 @@
         left: 50%;
         transform: translate(-50%,-50%);
         z-index: 2300;
-        background-image: url("src/introduction_1.png");
+        background-image: url("src/introduction_1.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -76,7 +124,7 @@
         left: 50%;
         transform: translate(-50%,-50%);
         z-index: 2300;
-        background-image: url("src/introduction_2.png");
+        background-image: url("src/introduction_2.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -91,7 +139,7 @@
         left: 50%;
         transform: translate(-50%,-50%);
         z-index: 2300;
-        background-image: url("src/introduction_3.png");
+        background-image: url("src/introduction_3.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -162,23 +210,6 @@
         opacity: 0;
         display: block;
       }
-      
-/*       #ui {
-        width: 30%;
-        height: 3%;
-        position: absolute;
-        top: 0%;
-        left: 5%;
-        z-index: 2400;
-        display: none;
-      }
-
-      h3 {
-        color: white;
-        font-size: 25px;
-        text-align: left;
-        display: block;
-      }  */
 
       #output{
         width: 100%;
@@ -188,18 +219,9 @@
         left: 0;
         z-index: 1500;
       }
-      
-      /* #start{
-        top: 10%;
-        left: 0;
-        z-index: 2000;
-        position:absolute;
-      } */
     </style>
 
     <script  type="module">
-
-
       const videoElement = document.getElementsByClassName("input_video")[0];
       videoElement.setAttribute('autoplay', '');
       videoElement.setAttribute('mute', '');
@@ -241,8 +263,6 @@
         //   canvasElement.height
         // );
 
-
-
         canvasCtx.restore();
       }
 
@@ -269,7 +289,6 @@
       console.log("test")
       console.log(camera)
       
-
 //       let start = document.getElementById("start");
 //       start.onclick = function(){camera.start()};
       
@@ -278,16 +297,17 @@
       
       const controls = window;
       const fpsControl = new controls.FPS();
-      
-
-       
     </script>
   </head>
 
   <body style="margin: 0; padding: 0; overflow: hidden;"> 
 
     <div id="Ushijima_Title"></div>
-    <div id="Ushijima_Character_1"></div>
+    <div id="Ushi1"></div>
+    <div id="Ushi2"></div>
+    <div id="Ushi3"></div>
+    <div id="Ushi4"></div>
+    <div id="Ushi5"></div>
     <div id="introduction_1"></div>
     <div id="introduction_2"></div>
     <div id="introduction_3"></div>
@@ -296,33 +316,26 @@
     <div id="background"></div>
     <div id="Gagou"></div>
     <div id="Overlay"></div>
-<!--     <div id="ui">
-      <h3>
-        <p>地図をタップで戻る</p>
-      </h3>
-    </div> -->
 
 
     <a-scene>
-      
       <a-sky src="src/Ushijima.jpg" rotation="0 170 1"></a-sky>
 
-      <a-text
+      <!-- <a-text
         font="kelsonsans"
         value=" Ukiyo-AR  : )"
         width="6"
         position="-2.3 2.25 -1.5"
         rotation="0 30 0"
-      ></a-text>
+      ></a-text> -->
       
       <a-image
         src="src/Hokusai.png"
         width="0.5"
         height="1"
         position="-4.5 1.5 -0.5"
-        rotation="0 100 0"
+        rotation="0 60 0"
       ></a-image>
-      
     </a-scene> 
 
     <script>
@@ -365,12 +378,10 @@
       });
     </script>
     
-    <div class="container2">
+    <div class="container">
       <video class="input_video"></video>
       <canvas id="output" class="output_canvas" width="1280px" height="720px"></canvas>
       <div id="control"></div>
-<!--       <button id="start">Start</button> -->
-    </div>
-        
+    </div>     
   </body>
 </html>
